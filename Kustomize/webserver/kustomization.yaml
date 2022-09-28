@@ -1,0 +1,6 @@
+resources:
+  - webapp.yaml
+  - websvc.yaml
+
+commonLabels:
+  env: Dev
