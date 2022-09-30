@@ -1,0 +1,4 @@
+tomcatPassword: Z0riiBe82U   # example purpose only
+service:
+  type: NodePort
+replicaCount: 2
