@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    env: dev
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        env: dev
+    spec:
+      containers:
+      - name: {{ .Release.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        args:
+          -  --base-path=/data
+          - --chain=alphanet 
+          - --name={{ .Values.nodeName }} 
+          - --execution=wasm 
+          - --wasm-execution=compiled 
+          - --pruning=archive 
+          - --state-cache-size=0 
+          - -- 
+          - --execution=wasm 
+          - --pruning=1000 
+          - --name="dev-trpc"
+      #   volumeMounts:
+      #     - name: rpc-moonbasealpha-claim
+      #       mountPath: /data
+      # volumes:
+      # - name: rpc-moonbasealpha-claim
+      #   persistentVolumeClaim:
+      #     claimName: rpc-moonbasealpha-claim
+

@@ -1,0 +1,9 @@
+apiVersion: v2
+name: moonbasealpha-rpc
+description: A Helm chart for MoonbaseAlpha-RPC node
+
+type: application
+
+version: 0.1.0
+
+appVersion: "v0.26.1"
