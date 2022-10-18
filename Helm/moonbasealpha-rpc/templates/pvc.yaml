@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: rpc-moonbasealpha-claim
+  name: "{{ .Release.Name }}-rpc-moonbasealpha-claim"
   labels:
     env: dev
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: ebs-sc
+  storageClassName: {{ .Values.storageclass }}
   resources:
     requests:
-      storage: 500Gi
+      storage: 1000Gi

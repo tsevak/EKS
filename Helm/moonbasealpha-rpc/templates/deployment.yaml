@@ -33,11 +33,11 @@ spec:
           - --execution=wasm 
           - --pruning=1000 
           - --name="dev-trpc"
-      #   volumeMounts:
-      #     - name: rpc-moonbasealpha-claim
-      #       mountPath: /data
-      # volumes:
-      # - name: rpc-moonbasealpha-claim
-      #   persistentVolumeClaim:
-      #     claimName: rpc-moonbasealpha-claim
+        volumeMounts:
+          - name: "{{ .Release.Name }}-rpc-moonbasealpha-claim"
+            mountPath: /data
+      volumes:
+      - name: "{{ .Release.Name }}-rpc-moonbasealpha-claim"
+        persistentVolumeClaim:
+          claimName: "{{ .Release.Name }}-rpc-moonbasealpha-claim"
 
