@@ -32,7 +32,7 @@ spec:
           - -- 
           - --execution=wasm 
           - --pruning=1000 
-          - --name="dev-trpc"
+          - --name={{ .Values.nodeName }}
         volumeMounts:
           - name: "{{ .Release.Name }}-rpc-moonbasealpha-claim"
             mountPath: /data

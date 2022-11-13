@@ -5,7 +5,7 @@ image:
   pullPolicy: IfNotPresent
   tag: ""
 
-nodeName: s86colla
+nodeName: c87lla
 
 storageclass: ""
 

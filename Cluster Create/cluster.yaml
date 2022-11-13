@@ -28,9 +28,9 @@ iam:
           ebsCSIController: true
 managedNodeGroups:
     - name: demo-worker-nodes
-      instanceType: t2.micro
-      desiredCapacity: 3
-      maxSize: 5
+      instanceType: m5.large
+      desiredCapacity: 2
+      maxSize: 3
       privateNetworking: true
       iam:
         withAddonPolicies:
@@ -39,6 +39,3 @@ managedNodeGroups:
            allow: true
            publicKeyPath: ~/.ssh/cluster-key.pub
       volumeSize: 50
-
-
-  
