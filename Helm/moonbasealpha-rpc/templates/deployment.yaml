@@ -18,7 +18,28 @@ spec:
         app: {{ .Release.Name }}
         env: dev
     spec:
+      initContainers:
+      - name: busyboxi
+        image: busybox:latest
+        command: ["/bin/sh"]
+        args: ["-c","chmod -R 777 /data"]
+        volumeMounts:
+        - name: "{{ .Release.Name }}-rpc-moonbasealpha-claim"
+          mountPath: "/data"
+      # - name: busybox
+      #   image: busybox:latest
+      #   args:
+      #   - sleep
+      #   - "3600"
       containers:
+      # - name: busybox
+      #   image: busybox:latest
+      #   args:
+      #   - sleep
+      #   - "3600"
+      #   volumeMounts:
+      #   - name: "{{ .Release.Name }}-rpc-moonbasealpha-claim"
+      #     mountPath: "/data"
       - name: {{ .Release.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         args:
