@@ -8,3 +8,7 @@ image:
 
 jenkinsUsername: ""
 jenkinsPasswd: ""
+
+containerPorts:
+  - name: web
+    port: 8080

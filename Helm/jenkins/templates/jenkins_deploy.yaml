@@ -19,7 +19,13 @@ spec:
           - name: JENKINS_USERNAME
             value: {{ default "demo" .Values.jenkinsUsername | quote }} # default  "demo" or userdefined to value of Username 
           - name: JENKINS_PASSWORD
-            value: {{ default "demo123" .Values.jenkinsPasswd | quote }}
+            {{- if .Values.jenkinsPasswd }}
+            value: {{ .Values.jenkinsPasswd }}
+            {{- else }}
+            value: "demo123"
+            {{- end }}
         ports:
-          - name: http
-            containerPort: 8080
+          {{- range .Values.containerPorts }}
+          - name: {{ .name }}
+            containerPort: {{ .port }}
+          {{- end }}
