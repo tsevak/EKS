@@ -1,4 +1,4 @@
-### List, Add, remove Repo 
+### List, Add, remove Repo
 
 ```console
 helm repo list
@@ -41,4 +41,5 @@ helm uninstall webserver
 ### Verify template logic
 ```console
 helm template <release-name> jenkins -s templates/jenkins_deploy.yaml
+helm template <release-name> jenkins --set jenkinsUsername=admin -s templates/jenkins_deploy.yaml
 ```
