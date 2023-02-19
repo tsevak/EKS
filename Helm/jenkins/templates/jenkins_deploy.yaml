@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ printf "%s-%s" .Release.Name .Chart.Name}} # example  MY-JENKINS
+  name: {{ template "jenkins.fullname" . }} # example  MY-JENKINS
 spec:
   replicas: {{ .Values.replicaCount }}   # This takes value from values.yaml
   selector:
