@@ -1,0 +1,9 @@
+apiVersion: v2
+name: minio
+description: Minio, Kubernetes native object storage, compatible to AWS S3
+
+type: application
+
+version: 0.1.0
+
+appVersion: 12.1.7
