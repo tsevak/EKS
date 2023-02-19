@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ printf "%s-%s" .Release.Name .Chart.Name}} # example  MY-JENKINS
+spec:
+  replicas: {{ .Values.replicaCount }}   # This takes value from values.yaml
+  selector:
+    matchLabels:
+      app: {{ printf "%s-%s" .Release.Name "jenkins" }}
+  template:
+    metadata:
+      labels:
+        app: {{ printf "%s-%s" .Release.Name "jenkins" }}
+    spec:
+      containers:
+      - name: jenkins
+        image: {{ printf "%s:%s" .Values.image.repository  .Values.image.tag  }} # example image_name:version
+        env:
+          - name: JENKINS_USERNAME
+            value: {{ default "demo" .Values.jenkinsUsername | quote }} # default  "demo" or userdefined to value of Username 
+          - name: JENKINS_PASSWORD
+            value: {{ default "demo123" .Values.jenkinsPasswd | quote }}
+        ports:
+          - name: http
+            containerPort: 8080

@@ -37,3 +37,8 @@ helm upgrade mysql-release bitnami/mysql --set auth.rootPassword=$ROOT_PASSWORD
 ```console
 helm uninstall webserver
 ```
+
+### Verify template logic
+```console
+helm template <release-name> jenkins -s templates/jenkins_deploy.yaml
+```
